@@ -50,7 +50,7 @@ def get_price(message: telebot.types.Message):
         bot.reply_to(message, f'Не удалось выдать результат :( Попробуйте позже.\n{e}')
 
     else:
-        text = f'Цена {amount} {base} в {quote}: {total_base}'
+        text = f'Цена {amount} {base} в {quote}: {round(total_base, 2)}'
         bot.send_message(message.chat.id, text)
 
 bot.polling(none_stop=True)

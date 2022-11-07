@@ -29,6 +29,8 @@ class Converter:
 
         if quote == base:
             raise APIException('Вы ввели одинаковые валюты')
+        if amount <= 0:
+            raise APIException('Количество валюты не может быть меньше либо равно нулю')
 
         r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={base_ticker}&tsyms={quote_ticker}')
         exchange_rate = float(json.loads(r.content)[quote_ticker])
